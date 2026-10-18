@@ -1,0 +1,28 @@
+Z-MIRROR — SUBMISSION CHECKLIST (5-hour sprint)
+
+MANDATORY FORM
+[ ] Challenge: select the form option matching Theme 2, AI Secured: Innovation Without Exposure.
+[ ] Paste the four project answers from the chat; each is under the 1,024-character limit.
+[ ] Upload Z-Mirror_IBM_Z_Datathon_2026_Project.pdf (under 5 MB).
+[ ] Public GitHub repository or publicly accessible source ZIP URL. Do not invent a URL; verify it in an incognito window.
+[ ] Video URL (max 3 minutes), public or unlisted with judges able to view.
+[ ] PDF share link if required, with permissions set to anyone with the link can view.
+[ ] Open-source links: UCI dataset, Python, Jupyter, Docker/Moby, GnuCOBOL.
+[ ] Optional architecture link: docs/ARCHITECTURE.md from the source repository or a public PDF/PNG link.
+[ ] Submit before the portal closes; verify the portal confirmation / submitted status.
+
+BEFORE PUBLISHING SOURCE
+[ ] Add the actual zmirror_pipeline.ipynb recovered from your Downloads folder to the repository if it is appropriate to publish. Check it for tokens, credentials, private IPs, or secrets first.
+[ ] Do not commit your zmirrorteam.pem private key, access tokens, or other secrets.
+[ ] Do not publish the whole public UCI data archive unless you have a good reason; the README contains its attribution and download link.
+[ ] Review docs/IMPLEMENTATION_STATUS.md and make no unsupported privacy / COBOL / utility claims.
+
+DEMO RECORDING
+[ ] Show LinuxONE host / s390x and Jupyter or terminal environment.
+[ ] Show `8/8` generator test summary and `18/18` validator summary.
+[ ] Show one reproducible generated output / manifest and fixed-width validation.
+[ ] Clearly say V2 utility, empirical privacy checks, and COBOL E2E are still pending unless newly verified.
+[ ] Upload video and test link access before form submission.
+
+SAFETY / COMPLIANCE
+[ ] Verify official competition eligibility and originality rules. Do not misstate participant eligibility or claim work complies with a rule that has not been confirmed.

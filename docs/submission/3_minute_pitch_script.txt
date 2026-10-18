@@ -1,0 +1,24 @@
+Z-MIRROR — 2 minute 40 second pitch script
+
+[0:00–0:20 | Title slide]
+Hi, we are presenting Z-Mirror, an evidence-gated synthetic test-data workflow for COBOL-oriented systems. The key idea is simple: generating synthetic records is not enough. A team needs to know whether the records pass format checks, retain useful properties, and have been assessed for privacy risk.
+
+[0:20–0:45 | Problem slide]
+Mainframe QA and modernization teams need realistic test records, but copying production records into development environments can create avoidable exposure. On the other hand, simplistic generated data can lose relationships that tests depend on. A generator by itself does not establish privacy or utility.
+
+[0:45–1:10 | Workflow slide]
+Z-Mirror starts from a public benchmark, generates candidate records reproducibly, validates the schema and value constraints, and writes a fixed-width sample with a hash manifest. It is designed to connect those checks to utility and empirical privacy-risk assessments, followed by a PASS, FAIL or INCONCLUSIVE release decision.
+
+[1:10–1:35 | LinuxONE architecture slide — show the live JupyterLab / terminal window]
+The prototype ran on IBM LinuxONE Community Cloud using the s390x architecture, with Python and JupyterLab inside Docker. We used the public UCI Bank Marketing benchmark, not confidential customer records. Our notebook reports a Generator V2 output of one thousand records from one hundred twenty-four aggregate cells, with a reproducible seed and manifest.
+
+[1:35–2:00 | Evidence slide — show test outputs]
+The generator regression suite passed eight of eight tests. The extended validator suite passed eighteen of eighteen scenarios when run independently. The fixed-width demonstration sample has twelve characters per record. An earlier V1 utility comparison showed a substantial outcome-rate gap, so we are not treating generation success as proof of utility.
+
+[2:00–2:25 | Release gate slide]
+We are transparent about what remains open. Generator V2 needs its own utility comparison and defined thresholds. Empirical privacy-risk checks still need to be completed, and although GnuCOBOL is installed on the LinuxONE host, we must still show an actual end-to-end compile-and-run test. We make no formal anonymity or differential-privacy claim.
+
+[2:25–2:40 | Closing]
+Z-Mirror's contribution is the evidence-gated workflow: generate, validate, measure, assess, and document the release decision. The goal is not to make every dataset pass, but to make the decision explainable. Thank you.
+
+Recording note: Replace descriptions of future work with verified live evidence only if you complete those checks before recording. Keep the submitted video under 3 minutes and show the live LinuxONE environment in the demonstration segment.

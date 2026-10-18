@@ -1,0 +1,19 @@
+1) WHAT IS THE PROBLEM YOU ARE TRYING TO SOLVE?
+Organizations using legacy systems such as COBOL applications need realistic test data to validate changes, test integrations, and develop analytics. Using production records for these tasks can expose sensitive information, while simplistic synthetic data may fail to preserve important structure or statistical properties. Teams need a controlled, evidence-based way to generate candidate synthetic records, validate their format and constraints, measure their utility, and assess potential privacy risks before release. Z-Mirror addresses this need through a reproducible synthetic-data pipeline with explicit validation and a release-gate approach that reports evidence and unresolved risks rather than assuming synthetic data is automatically safe.
+
+2) HOW ARE YOU PLANNING TO SOLVE THE PROBLEM? (BRIEF OVERVIEW)
+Z-Mirror is a Python-based synthetic-data pipeline with a validation and evidence workflow. It prepares an attributed reference dataset, generates candidate records using a reproducible seeded generator, validates schema, value ranges, unique identifiers and fixed-width encoding, and records output hashes in a manifest. The implementation includes generator regression tests and 18 extended validator checks, all of which passed when run separately. The next release-gate stage evaluates utility and empirical privacy risks and checks compatibility with a COBOL consumer. Results are intended to be reported as PASS, FAIL or INCONCLUSIVE according to actual evidence. Formal anonymity or differential-privacy guarantees are not claimed.
+
+3) HOW DOES YOUR SOLUTION LEVERAGE IBM Z / LINUXONE TECHNOLOGIES?
+The prototype runs on IBM LinuxONE Community Cloud in an s390x environment, using a Docker container for the Python/JupyterLab workflow. The pipeline uses Python data processing and custom descriptive evaluation, with GnuCOBOL available on the LinuxONE host for record-consumer compatibility testing. LinuxONE provides the environment for reproducible execution on IBM Z architecture and for demonstrating a data workflow close to enterprise workloads. The generator and validator tests have passed in the container. Actual COBOL execution and end-to-end production deployment must be demonstrated separately and are not claimed as completed until verified.
+
+4) WHAT VALUE DOES YOUR SOLUTION DELIVER, AND WHO WILL BENEFIT?
+Potential beneficiaries include mainframe application teams, QA engineers, data engineers, and organizations modernizing or testing COBOL-based systems. Z-Mirror aims to reduce dependence on production records during development and testing, while making the synthetic-data process auditable through reproducible generation, schema and range validation, manifests, utility measurements, and explicit privacy-risk checks. Its key value is not simply generating fake records, but providing evidence to help teams decide whether a candidate dataset is suitable for a defined test purpose. The current prototype demonstrates generation and validation tests; privacy safety, statistical suitability, and COBOL compatibility must be established through additional measured evidence before operational use.
+
+OPEN-SOURCE RESOURCES (links)
+UCI Bank Marketing dataset: https://archive.ics.uci.edu/dataset/222/bank+marketing
+Python: https://www.python.org/
+Project Jupyter: https://jupyter.org/
+Docker/Moby: https://github.com/moby/moby
+GnuCOBOL: https://gnucobol.sourceforge.io/
+LinuxONE Community Cloud: https://linuxone.cloud.marist.edu/#/login

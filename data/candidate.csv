@@ -1,0 +1,6 @@
+record_id,age,balance,outcome
+SYN001,35,1200,yes
+SYN002,48,-250,no
+SYN003,29,50000,yes
+SYN004,60,0,no
+SYN005,42,8200,yes
