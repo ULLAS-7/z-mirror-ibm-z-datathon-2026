@@ -1,4 +1,4 @@
-# Z-Mirror — IBM Z Datathon 2026
+﻿# Z-Mirror â€” IBM Z Datathon 2026
 
 **Evidence-gated synthetic test data for COBOL-oriented workflows.**
 
@@ -11,8 +11,8 @@ Z-Mirror is a prototype for generating candidate synthetic records, validating a
 - Public UCI Bank Marketing reference dataset; full dataset is not bundled
 
 ## Notebook packaging note
-The recovered runtime notebook `zmirror_pipeline.ipynb` lives in the submitter's Windows Downloads folder and is not included in this generated source bundle. If it is appropriate to publish, copy the actual notebook into the repository after checking it for access tokens, private keys, credentials, and sensitive output. The notebook contains the recorded Generator V2 run; this bundle's standalone `generate_synthetic.py` is the earlier V1 demo generator. Do not claim V2 is reproducible from this repository until its code is included and reviewed.
 
+The recovered runtime notebook `zmirror_pipeline.ipynb` is included in this repository. It contains the recorded Generator V2 run. The standalone `src/generate_synthetic.py` is the earlier V1 demo generator. Review the notebook and its outputs when reproducing the V2 workflow; the V2 utility thresholds, empirical privacy-risk assessment, and end-to-end COBOL execution remain open.
 ## Current evidence
 - Generator tests: **8/8 passed**
 - Validator scenarios: **18/18 passed**
@@ -68,3 +68,4 @@ The evaluator measures selected properties and does not make a PASS/FAIL utility
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
 - [`docs/IMPLEMENTATION_STATUS.md`](docs/IMPLEMENTATION_STATUS.md)
 - [`reports/evidence_summary.md`](reports/evidence_summary.md)
+
