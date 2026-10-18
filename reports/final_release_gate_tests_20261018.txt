@@ -1,0 +1,14 @@
+test_all_checks_allow_review_not_automatic_approval (test_release_gate.ReleaseDecisionTests.test_all_checks_allow_review_not_automatic_approval) ... ok
+test_integrity_failure_always_blocks (test_release_gate.ReleaseDecisionTests.test_integrity_failure_always_blocks) ... ok
+test_missing_cobol_blocks_release (test_release_gate.ReleaseDecisionTests.test_missing_cobol_blocks_release) ... ok
+test_pending_privacy_and_cobol_block_release (test_release_gate.ReleaseDecisionTests.test_pending_privacy_and_cobol_block_release) ... ok
+test_exact_threshold_boundaries_pass (test_release_gate.ReleaseGateTests.test_exact_threshold_boundaries_pass) ... ok
+test_excessive_balance_ks_fails (test_release_gate.ReleaseGateTests.test_excessive_balance_ks_fails) ... ok
+test_large_outcome_gap_fails (test_release_gate.ReleaseGateTests.test_large_outcome_gap_fails) ... ok
+test_metrics_inside_targets_pass (test_release_gate.ReleaseGateTests.test_metrics_inside_targets_pass) ... ok
+test_missing_mean_error_fails_closed (test_release_gate.ReleaseGateTests.test_missing_mean_error_fails_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.000s
+
+OK

@@ -1,0 +1,20 @@
+test_independent_draw_is_close_to_baseline (test_privacy_probe.TestChecks.test_independent_draw_is_close_to_baseline) ... ok
+test_nn_degenerate_baseline_is_inconclusive_not_pass (test_privacy_probe.TestChecks.test_nn_degenerate_baseline_is_inconclusive_not_pass) ... ok
+test_nn_planted_copies_fail (test_privacy_probe.TestChecks.test_nn_planted_copies_fail) ... ok
+test_planted_exact_copies_fail (test_privacy_probe.TestChecks.test_planted_exact_copies_fail) ... ok
+test_candidate_too_large_for_baseline (test_privacy_probe.TestFailClosed.test_candidate_too_large_for_baseline) ... ok
+test_empty_candidate (test_privacy_probe.TestFailClosed.test_empty_candidate) ... ok
+test_empty_outcome (test_privacy_probe.TestFailClosed.test_empty_outcome) ... ok
+test_missing_column (test_privacy_probe.TestFailClosed.test_missing_column) ... ok
+test_missing_file (test_privacy_probe.TestFailClosed.test_missing_file) ... ok
+test_non_integer_age (test_privacy_probe.TestFailClosed.test_non_integer_age) ... ok
+test_all_pass_still_does_not_establish_privacy (test_privacy_probe.TestPolicy.test_all_pass_still_does_not_establish_privacy) ... ok
+test_boundary_is_inclusive_and_just_over_fails (test_privacy_probe.TestPolicy.test_boundary_is_inclusive_and_just_over_fails) ... ok
+test_fail_outranks_inconclusive (test_privacy_probe.TestPolicy.test_fail_outranks_inconclusive) ... ok
+test_no_checks_is_not_success (test_privacy_probe.TestPolicy.test_no_checks_is_not_success) ... ok
+test_same_seed_same_report_and_hash_tracks_content (test_privacy_probe.TestReproducibility.test_same_seed_same_report_and_hash_tracks_content) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.981s
+
+OK

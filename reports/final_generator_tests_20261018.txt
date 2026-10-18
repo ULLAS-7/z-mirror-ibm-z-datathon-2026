@@ -1,0 +1,13 @@
+test_different_seed_changes_content (test_generate_synthetic.GeneratorTests.test_different_seed_changes_content) ... ok
+test_force_overwrites_deliberately (test_generate_synthetic.GeneratorTests.test_force_overwrites_deliberately) ... ok
+test_manifest_schema_seed_and_hash (test_generate_synthetic.GeneratorTests.test_manifest_schema_seed_and_hash) ... ok
+test_refuses_to_overwrite_without_force (test_generate_synthetic.GeneratorTests.test_refuses_to_overwrite_without_force) ... ok
+test_rejects_zero_or_negative_rows (test_generate_synthetic.GeneratorTests.test_rejects_zero_or_negative_rows) ... ok
+test_reproducible_same_seed (test_generate_synthetic.GeneratorTests.test_reproducible_same_seed) ... ok
+test_schema_and_row_count (test_generate_synthetic.GeneratorTests.test_schema_and_row_count) ... ok
+test_unique_ids_and_valid_ranges (test_generate_synthetic.GeneratorTests.test_unique_ids_and_valid_ranges) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.413s
+
+OK

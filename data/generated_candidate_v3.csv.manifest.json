@@ -1,0 +1,23 @@
+{
+  "generator": "zmirror-aggregate-histogram-v3",
+  "generated_at_utc": "2026-10-18T07:34:35.473014+00:00",
+  "seed": 42,
+  "rows": 1000,
+  "schema": [
+    "record_id",
+    "age",
+    "balance",
+    "outcome"
+  ],
+  "reference_sha256": "176e520cbefc564170872bea12a1886982430471ce25c1298595a6bf27ce0810",
+  "generated_sha256": "41334f9fa5f2ec0847edc09135ead30a634856a9b3d7c76b20a49657eb4203b7",
+  "balance_bin_width": 500,
+  "method": "Weighted age-group/balance-sign aggregate cells; age sampled from age histograms; balance sampled within weighted fixed-width histogram bins; add-one-smoothed outcome rates.",
+  "limitations": [
+    "Experimental aggregate-based sampler; not differential privacy.",
+    "No formal anonymity or disclosure-risk guarantee.",
+    "Histogram counts and group statistics may still leak information.",
+    "Utility acceptance thresholds are not defined.",
+    "COBOL execution is not tested by this generator."
+  ]
+}

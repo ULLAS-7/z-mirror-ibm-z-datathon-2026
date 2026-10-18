@@ -1,71 +1,95 @@
-﻿# Z-Mirror â€” IBM Z Datathon 2026
+# Z-Mirror: Evidence-Gated Synthetic Data for IBM Z
 
-**Evidence-gated synthetic test data for COBOL-oriented workflows.**
+**Theme:** AI Secured: Innovation Without Exposure
+**Status:** Experimental prototype; release not approved.
 
-Z-Mirror is a prototype for generating candidate synthetic records, validating a constrained CSV schema and fixed-width output, tracking run provenance with a SHA-256 manifest, and measuring selected utility properties before a release decision. It aims to make generation auditable rather than assume that generated data is automatically private or useful.
+Z-Mirror explores generating synthetic test data and evaluating whether a candidate is ready for downstream testing. Successful generation does not automatically authorize release.
 
-## Demonstrated environment
-- IBM LinuxONE Community Cloud, `s390x`
-- Python 3.12 / JupyterLab in Docker
-- GnuCOBOL 3.1.2 available on the host (an end-to-end COBOL consumer test remains pending)
-- Public UCI Bank Marketing reference dataset; full dataset is not bundled
+## Current capabilities
 
-## Notebook packaging note
+- Seeded experimental synthetic-data generation.
+- SHA-256 artifact manifests.
+- Schema, integrity, and utility checks.
+- An explicit release gate that can withhold approval.
+- Empirical exact-overlap, unique-record-match, and nearest-neighbour probes.
+- Fixed-width validation components for a COBOL-oriented workflow.
+- JSON and Markdown evidence reports.
 
-The recovered runtime notebook `zmirror_pipeline.ipynb` is included in this repository. It contains the recorded Generator V2 run. The standalone `src/generate_synthetic.py` is the earlier V1 demo generator. Review the notebook and its outputs when reproducing the V2 workflow; the V2 utility thresholds, empirical privacy-risk assessment, and end-to-end COBOL execution remain open.
-## Current evidence
-- Generator tests: **8/8 passed**
-- Validator scenarios: **18/18 passed**
-- Notebook Generator V2 reported 45,211 reference rows, 1,000 generated rows, 124 aggregate cells, seed 42 and a manifest hash.
-- V1's earlier utility comparison showed material distribution/outcome-rate drift; do not use it as a V2 result.
-- V2 utility threshold comparison, empirical privacy-risk assessment, and end-to-end COBOL execution are still open. See [`docs/IMPLEMENTATION_STATUS.md`](docs/IMPLEMENTATION_STATUS.md).
+## Recorded LinuxONE verification
 
-## Run tests
-Use Python 3.12+ from this repository root:
+These results were recorded on 18 October 2026; rerun the tests to verify the current checkout.
+
+| Check | Recorded result |
+|---|---|
+| Generator tests | 8/8 passed |
+| Extended validator scenarios | 18/18 passed |
+| Release-gate unit tests | 9/9 passed |
+| Privacy-probe unit tests | 15/15 passed |
+| V3 integrity checks | 10/10 passed in recorded verification |
+| V3 utility against illustrative targets | Meets configured targets |
+| Privacy probe | 2 PASS, 1 INCONCLUSIVE |
+| Privacy assurance | NOT ESTABLISHED |
+| Actual COBOL execution | NOT VERIFIED |
+| Release decision | NOT APPROVED |
+
+## Experimental utility comparison
+
+Measurements from one experiment with 1,000 records per candidate:
+
+| Metric | Reference | V2 | V3 |
+|---|---:|---:|---:|
+| Balance mean | 1,362.27 | 5,943.30 | 1,416.48 |
+| Balance 95th percentile | 5,768.00 | 53,499.00 | 5,747.05 |
+| Balance KS distance | 0.0000 | 0.0871 | 0.0758 |
+| Age KS distance | 0.0000 | 0.0159 | 0.0184 |
+| Outcome yes rate | 11.6985% | 10.3000% | 11.1000% |
+| Absolute outcome-rate gap | — | 1.3985 pp | 0.5985 pp |
+
+V3 improves selected balance and outcome-rate measurements in this experiment. Its age KS distance is slightly worse than V2. These results do not establish overall utility or production fitness. Thresholds are illustrative prototype targets, not approved acceptance criteria.
+
+## Privacy findings and limitations
+
+The V3 empirical probe reported:
+- Exact-overlap rate: 0.297 against an exploratory baseline limit of 0.430.
+- Unique-record-match rate: 0.143 against an exploratory baseline limit of 0.231.
+- Nearest-neighbour check: INCONCLUSIVE because the baseline fifth-percentile distance was zero for the selected fields.
+- Overall: two checks passed and one was inconclusive.
+
+The reference dataset is public, only selected fields are evaluated, and the baseline is not a confidential-data holdout. These checks do not establish anonymity, resistance to every inference attack, or differential privacy. The release gate remains blocked pending privacy assurance and actual COBOL execution evidence.
+
+## IBM LinuxONE context
+
+Development evidence was recorded from IBM LinuxONE Community Cloud using the observed `s390x` environment. Platform use alone does not demonstrate integration with an enterprise COBOL application.
+
+## Reproduction
+
+Run from the repository root in a Python environment with the required dependencies installed:
 
 ```bash
-python -m unittest discover -s tests -p 'test_generate_synthetic.py' -v
+python -m unittest discover -s tests -p "test_generate_synthetic.py" -v
 python tests/test_validator_extended.py
-python -m unittest discover -s tests -p 'test_evaluate_utility.py' -v
+python -m unittest discover -s tests -p "test_release_gate.py" -v
+python -m unittest discover -s tests -p "test_privacy_probe.py" -v
+python src/release_gate.py
+python privacy_probe.py --reference data/reference_candidate.csv --candidate data/generated_candidate_v3.csv --output reports/privacy_probe_v3_20261018.json
 ```
 
-The validator's fixture `data/candidate.csv` contains five demonstration records. To validate and emit a 12-character fixed-width sample:
+Some checks may require additional dependencies or arguments depending on the local environment. The recorded LinuxONE results above are not a guarantee that these commands will pass on every machine.
 
-```bash
-python src/validate_candidate.py
-```
+## Important artifacts
 
-To generate a candidate and manifest:
+- `src/`: generator and validation implementation.
+- `tests/`: regression and scenario tests.
+- `data/`: reference and generated candidate data, manifests, and source attribution.
+- `reports/`: recorded test logs, utility comparisons, privacy findings, and release-gate evidence.
+- `exports/`: packaged evidence bundle, when present.
 
-```bash
-python src/generate_synthetic.py --rows 1000 --seed 42 --output data/generated_candidate.csv
-```
+## Future work
 
-To evaluate utility, first download the public UCI Bank Marketing data from the [official repository](https://archive.ics.uci.edu/dataset/222/bank+marketing), extract `bank-full.csv` into `data/source/`, normalize it, and compare:
+- Obtain stakeholder-approved utility and privacy criteria.
+- Evaluate against an appropriately authorized confidential-data holdout.
+- Investigate the inconclusive nearest-neighbour result.
+- Verify fixed-width output using an actual COBOL compiler/runtime and documented test cases.
+- Re-run all checks and update the evidence bundle after changes.
 
-```bash
-python src/prepare_reference.py --input data/source/bank-full.csv --output data/reference.csv
-python src/evaluate_utility.py --reference data/reference.csv --candidate data/generated_candidate.csv --output reports/utility_evaluation.json
-```
-
-The evaluator measures selected properties and does not make a PASS/FAIL utility decision unless policy thresholds are independently defined. Exact tuple overlap against a public reference is not a privacy-risk score.
-
-## Limitations / safe claims
-- This is a prototype, not a production synthetic-data product.
-- The standalone generator uses hand-defined parameters and does not, by itself, learn from confidential data.
-- No differential privacy, formal anonymity, legal-compliance, or production-readiness guarantee is claimed.
-- Empirical privacy-risk checks remain open. A GnuCOBOL fixed-width format smoke test is included in `tests/cobol_format_smoke.cbl`; run it on LinuxONE before claiming the format gate passed. It is not a substitute for a production copybook or business-program integration test.
-
-## Resources and attribution
-- UCI Bank Marketing, Moro, Rita & Cortez (2014), DOI: https://doi.org/10.24432/C5K306; CC BY 4.0 attribution is required for adapted data. [Dataset page](https://archive.ics.uci.edu/dataset/222/bank+marketing)
-- Python: https://www.python.org/
-- Project Jupyter: https://jupyter.org/
-- Docker/Moby: https://github.com/moby/moby
-- GnuCOBOL: https://gnucobol.sourceforge.io/
-- LinuxONE Community Cloud: https://linuxone.cloud.marist.edu/#/login
-
-## Project documents
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
-- [`docs/IMPLEMENTATION_STATUS.md`](docs/IMPLEMENTATION_STATUS.md)
-- [`reports/evidence_summary.md`](reports/evidence_summary.md)
-
+**Conclusion:** Z-Mirror demonstrates an evidence-gated prototype workflow. Privacy assurance and COBOL execution remain unverified, so the current candidate is not approved for release.

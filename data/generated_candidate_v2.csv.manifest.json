@@ -1,0 +1,30 @@
+{
+  "generator": "zmirror-aggregate-binned-v2",
+  "seed": 42,
+  "rows": 1000,
+  "schema": [
+    "record_id",
+    "age",
+    "balance",
+    "outcome"
+  ],
+  "reference_dataset": "UCI Bank Marketing, prepared subset",
+  "reference_sha256": "176e520cbefc564170872bea12a1886982430471ce25c1298595a6bf27ce0810",
+  "generated_sha256": "9c85fd9e7edffef1ebdb5898207d29906d508672b8a9ea349f1f56597c5f42ce",
+  "age_groups": [
+    "18-29",
+    "30-44",
+    "45-60",
+    "61+"
+  ],
+  "negative_balance_bins": 8,
+  "positive_balance_bins": 8,
+  "aggregate_cells": 124,
+  "method": "Weighted sampling from aggregate age-group, balance-bin and outcome counts; age sampled from within-cell counts; balance sampled uniformly within the observed bucket range.",
+  "limitations": [
+    "This is a coarse aggregate-based demonstration, not a formal privacy mechanism.",
+    "No differential privacy guarantee is provided.",
+    "Statistical utility must be measured separately.",
+    "Small aggregate cells and generated values may still carry disclosure risk."
+  ]
+}

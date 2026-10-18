@@ -1,0 +1,19 @@
+PASS baseline_valid: exit=0
+PASS wrong_header_counts_rows: exit=1
+PASS extra_value_rejected: exit=1
+PASS missing_value_rejected: exit=1
+PASS empty_id_rejected: exit=1
+PASS duplicate_id_rejected: exit=1
+PASS age_too_low: exit=1
+PASS age_too_high: exit=1
+PASS age_not_integer: exit=1
+PASS balance_too_high: exit=1
+PASS balance_too_low: exit=1
+PASS invalid_outcome: exit=1
+PASS negative_balance_encoded: exit=0
+PASS balance_boundaries: exit=0
+PASS empty_csv: exit=1
+PASS header_only_csv: exit=1
+PASS malformed_csv_has_error_report: exit=2
+PASS stale_artifacts_cleared_after_malformed_csv: exit=2
+Extended summary: 18/18 passed

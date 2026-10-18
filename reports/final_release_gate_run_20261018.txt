@@ -1,0 +1,24 @@
+=== AUTOMATED RELEASE GATE ===
+PASS: reference_schema_valid
+PASS: v2_schema_valid
+PASS: v3_schema_valid
+PASS: v3_has_1000_rows
+PASS: v3_ids_unique
+PASS: v3_hash_matches_manifest
+PASS: reference_hash_matches_manifest
+PASS: v3_age_within_reference_range
+PASS: v3_balance_within_reference_range
+
+V3 utility checks:
+PASS: age_ks_within_target
+PASS: balance_ks_within_target
+PASS: balance_mean_error_within_target
+PASS: balance_p95_error_within_target
+PASS: outcome_gap_within_target
+
+Integrity: PASS
+Utility: MEETS_ILLUSTRATIVE_TARGETS
+Release: NOT_APPROVED_PRIVACY_AND_COBOL_CHECKS_PENDING
+
+Markdown: /home/ibm-user/shared/z-mirror-jupyter/reports/RELEASE_GATE_REPORT_20261018.md
+JSON:     /home/ibm-user/shared/z-mirror-jupyter/reports/release_gate_report_20261018.json

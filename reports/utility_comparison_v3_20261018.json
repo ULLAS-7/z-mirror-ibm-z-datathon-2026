@@ -1,0 +1,66 @@
+{
+  "generated_at_utc": "2026-10-18T07:34:35.486739+00:00",
+  "reference": {
+    "rows": 45211,
+    "sha256": "176e520cbefc564170872bea12a1886982430471ce25c1298595a6bf27ce0810",
+    "age": {
+      "mean": 40.93621021432837,
+      "median": 39.0,
+      "p95": 59.0,
+      "p99": 71.0
+    },
+    "balance": {
+      "mean": 1362.2720576850766,
+      "median": 448.0,
+      "p95": 5768.0,
+      "p99": 13164.900000000001
+    },
+    "outcome_yes_rate": 0.11698480458295547
+  },
+  "v2": {
+    "rows": 1000,
+    "age": {
+      "mean": 40.917,
+      "median": 39.0,
+      "p95": 59.0,
+      "p99": 69.00999999999999,
+      "ks_vs_reference": 0.01590369600318503
+    },
+    "balance": {
+      "mean": 5943.301,
+      "median": 454.0,
+      "p95": 53499.0,
+      "p99": 91717.23999999999,
+      "ks_vs_reference": 0.08708157306850095
+    },
+    "outcome_yes_rate": 0.103,
+    "outcome_yes_rate_gap_pp": 1.398480458295548
+  },
+  "v3": {
+    "rows": 1000,
+    "age": {
+      "mean": 41.071,
+      "median": 39.0,
+      "p95": 59.0,
+      "p99": 72.0,
+      "ks_vs_reference": 0.01843175333436553
+    },
+    "balance": {
+      "mean": 1416.48,
+      "median": 491.5,
+      "p95": 5747.049999999997,
+      "p99": 12835.929999999998,
+      "ks_vs_reference": 0.07580464931100839
+    },
+    "outcome_yes_rate": 0.111,
+    "outcome_yes_rate_gap_pp": 0.5984804582955472
+  },
+  "v3_sha256": "41334f9fa5f2ec0847edc09135ead30a634856a9b3d7c76b20a49657eb4203b7",
+  "v3_manifest_sha256_matches": true,
+  "interpretation": [
+    "Lower KS distance indicates closer empirical marginal distributions.",
+    "Distribution similarity is not a privacy score.",
+    "No utility acceptance threshold or utility PASS is assigned.",
+    "Results do not establish anonymity, differential privacy, or production fitness."
+  ]
+}

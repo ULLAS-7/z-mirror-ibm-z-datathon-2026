@@ -1,0 +1,86 @@
+{
+  "project": "Z-Mirror",
+  "report": "Automated Release Gate",
+  "generated_at_utc": "2026-10-18T09:55:06.369416+00:00",
+  "environment": {
+    "architecture": "s390x",
+    "python": "3.12.15"
+  },
+  "threshold_policy": {
+    "type": "illustrative prototype targets",
+    "approved_by_stakeholder": false,
+    "privacy_thresholds": false,
+    "thresholds": {
+      "age_ks_max": 0.03,
+      "balance_ks_max": 0.1,
+      "balance_mean_relative_error_max": 0.1,
+      "balance_p95_relative_error_max": 0.1,
+      "outcome_yes_gap_pp_max": 2.0
+    }
+  },
+  "artifacts": {
+    "reference_rows": 45211,
+    "v2_rows": 1000,
+    "v3_rows": 1000,
+    "reference_sha256": "176e520cbefc564170872bea12a1886982430471ce25c1298595a6bf27ce0810",
+    "v2_sha256": "9c85fd9e7edffef1ebdb5898207d29906d508672b8a9ea349f1f56597c5f42ce",
+    "v3_sha256": "41334f9fa5f2ec0847edc09135ead30a634856a9b3d7c76b20a49657eb4203b7",
+    "manifest_v3_sha256": "41334f9fa5f2ec0847edc09135ead30a634856a9b3d7c76b20a49657eb4203b7"
+  },
+  "integrity_checks": {
+    "reference_schema_valid": true,
+    "v2_schema_valid": true,
+    "v3_schema_valid": true,
+    "v3_has_1000_rows": true,
+    "v3_ids_unique": true,
+    "v3_hash_matches_manifest": true,
+    "reference_hash_matches_manifest": true,
+    "v3_age_within_reference_range": true,
+    "v3_balance_within_reference_range": true
+  },
+  "integrity_status": "PASS",
+  "v2_metrics": {
+    "age_ks": 0.01590369600318503,
+    "balance_ks": 0.08708157306850095,
+    "balance_mean_reference": 1362.2720576850766,
+    "balance_mean_candidate": 5943.301,
+    "balance_mean_relative_error": 3.3627856612573526,
+    "balance_p95_reference": 5768.0,
+    "balance_p95_candidate": 53499.0,
+    "balance_p95_relative_error": 8.275138696255201,
+    "outcome_yes_rate_reference": 0.11698480458295547,
+    "outcome_yes_rate_candidate": 0.103,
+    "outcome_yes_gap_pp": 1.398480458295548
+  },
+  "v3_metrics": {
+    "age_ks": 0.01843175333436553,
+    "balance_ks": 0.07580464931100839,
+    "balance_mean_reference": 1362.2720576850766,
+    "balance_mean_candidate": 1416.48,
+    "balance_mean_relative_error": 0.03979230287306897,
+    "balance_p95_reference": 5768.0,
+    "balance_p95_candidate": 5747.049999999997,
+    "balance_p95_relative_error": 0.0036321081830794984,
+    "outcome_yes_rate_reference": 0.11698480458295547,
+    "outcome_yes_rate_candidate": 0.111,
+    "outcome_yes_gap_pp": 0.5984804582955472
+  },
+  "v3_utility_checks": {
+    "age_ks_within_target": true,
+    "balance_ks_within_target": true,
+    "balance_mean_error_within_target": true,
+    "balance_p95_error_within_target": true,
+    "outcome_gap_within_target": true
+  },
+  "utility_status": "MEETS_ILLUSTRATIVE_TARGETS",
+  "privacy_assurance": "INCONCLUSIVE_NOT_ESTABLISHED",
+  "cobol_execution": "NOT_VERIFIED",
+  "release_status": "NOT_APPROVED_PRIVACY_AND_COBOL_CHECKS_PENDING",
+  "limitations": [
+    "Illustrative utility targets are not formally approved acceptance criteria.",
+    "Distribution similarity and file hashes are not privacy guarantees.",
+    "No differential privacy guarantee is provided.",
+    "COBOL compilation and execution were not verified by this gate.",
+    "Passing this gate does not establish production readiness."
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "checks": {
+    "exact_overlap": {
+      "baseline_limit": 0.43,
+      "baseline_mean": 0.406094,
+      "candidate_rate": 0.297,
+      "rule": "candidate rate <= baseline 0.95 quantile",
+      "status": "PASS"
+    },
+    "nearest_neighbour": {
+      "baseline_median": 0.0003895646150842147,
+      "baseline_q05": 0.0,
+      "candidate_median": 0.0006474125000880404,
+      "reason": "baseline 5th percentile distance is 0 (many real records have exact twins in this coarse 3-field schema); the share test is degenerate here. Use the exact-overlap checks.",
+      "rule": "share of candidates strictly closer than baseline 5th percentile <= 0.10",
+      "status": "INCONCLUSIVE"
+    },
+    "unique_record_match": {
+      "baseline_limit": 0.231,
+      "baseline_mean": 0.208682,
+      "candidate_rate": 0.143,
+      "rule": "share of candidate rows matching exactly one reference record <= baseline 0.95 quantile",
+      "status": "PASS"
+    }
+  },
+  "config": {
+    "baseline_draws": 500,
+    "nn_baseline_draws": 3,
+    "nn_max_share_below_q05": 0.1,
+    "overlap_quantile": 0.95,
+    "seed": 42,
+    "singling_quantile": 0.95
+  },
+  "inputs": {
+    "candidate_rows": 1000,
+    "candidate_sha256": "41334f9fa5f2ec0847edc09135ead30a634856a9b3d7c76b20a49657eb4203b7",
+    "reference_rows": 45211,
+    "reference_sha256": "176e520cbefc564170872bea12a1886982430471ce25c1298595a6bf27ce0810"
+  },
+  "limitations": [
+    "Public reference data; says nothing about protecting a confidential database.",
+    "Only three fields are compared; absence of a match here is not anonymity.",
+    "Heuristic probe, not differential privacy and not a formal guarantee.",
+    "The generator's training data is the whole reference, so the baseline is a coincidence baseline, not a true holdout."
+  ],
+  "overall": {
+    "checks_fail": 0,
+    "checks_inconclusive": 1,
+    "checks_pass": 2,
+    "exit_code": 2,
+    "privacy_assurance": "NOT ESTABLISHED",
+    "statement": "These checks measure selected empirical properties of one run. They do not establish privacy."
+  },
+  "threshold_status": "exploratory targets, fixed before the run; not stakeholder-approved; not privacy thresholds",
+  "tool": "zmirror_privacy_probe",
+  "version": "0.1.0"
+}
